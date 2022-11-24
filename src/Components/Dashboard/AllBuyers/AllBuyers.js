@@ -1,21 +1,25 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query'
 
-const Alluser = () => {
-    const [users, setUsers] = useState([]);
-
-
-    useEffect(() => {
-        axios.get('http://localhost:5000/alluser')
-            .then(data => {
-                setUsers(data.data);
+const AllBuyers = () => {
+    const { data: buyers = [], isLoading, refetch } = useQuery({
+        queryKey: ['buyers'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/allbuyers', {
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
             })
-    }, [])
+            const data = await res.json()
+            return data;
+        }
+
+    })
+
 
     return (
         <div>
-            <h1 className='text-3xl my-10 font-bold'>All users</h1>
-
+            <h1 className='text-3xl font-bold my-10'>All Buyers</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full text-center">
                     <thead>
@@ -30,7 +34,7 @@ const Alluser = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, i) => <tr
+                            buyers.map((user, i) => <tr
                                 key={i}
                                 className="hover">
                                 <th>{i + 1}</th>
@@ -51,4 +55,4 @@ const Alluser = () => {
     );
 };
 
-export default Alluser;
+export default AllBuyers;

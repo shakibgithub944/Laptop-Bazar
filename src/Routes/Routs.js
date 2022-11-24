@@ -1,9 +1,13 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../Components/Dashboard/AddProduct/AddProduct";
+import AdminRoute from "../Components/Dashboard/AdminRoute/AdminRoute";
+import AllBuyers from "../Components/Dashboard/AllBuyers/AllBuyers";
+import AllSeller from "../Components/Dashboard/AllSeller/AllSeller";
 import Alluser from "../Components/Dashboard/AllUsers/Alluser";
 import DashboardLayout from "../Components/Dashboard/DashboardLayout.js/DashboardLayout";
 import MyOrders from "../Components/Dashboard/MyOrders/MyOrders";
+import SellerRoute from "../Components/Dashboard/SellerRoute/SellerRoute";
 import Main from "../Components/Main/Main";
 import Blog from "../Components/Pages/Blog/Blog";
 import ErrorPage from "../Components/Pages/ErrorPage/ErrorPage";
@@ -51,15 +55,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <PrivetRoute><MyOrders></MyOrders></PrivetRoute>
+                element: <MyOrders></MyOrders>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <PrivetRoute><AddProduct></AddProduct></PrivetRoute>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/alluser',
-                element:<Alluser></Alluser>
+                element: <AdminRoute><Alluser></Alluser></AdminRoute>
+            },
+            {
+                path: '/dashboard/allseller',
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
         ]
     }
