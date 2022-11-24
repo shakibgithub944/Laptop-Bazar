@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../UserContext/AuthProvider';
 
@@ -13,8 +13,9 @@ const Login = () => {
     // const [token] = useToken(createEmail);
 
     // const location = useLocation();
-    // const navigate = useNavigate();
-    // const from = location.state?.from?.pathname || '/';
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     // if (token) {
     //     navigate(from, { replace: true })
@@ -28,7 +29,7 @@ const Login = () => {
                 console.log(user);
                 // setCreateEmail(data.email)
                 toast.success('Login successful')
-
+                navigate(from, { replace: true })
             })
             .then(err => console.log(err))
 
@@ -37,6 +38,7 @@ const Login = () => {
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -75,7 +77,7 @@ const Login = () => {
                 </form>
                 <p className='text-center text-accent my-4'>New to Laptop-Bazar? <Link className='text-secondary' to='/register'>Create new account</Link> </p>
                 <div className="divider">OR</div>
-                <button type="submit"onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
+                <button type="submit" onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
 
             </div>
         </div>

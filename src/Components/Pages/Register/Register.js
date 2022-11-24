@@ -27,7 +27,7 @@ const Register = () => {
                 updateUser(data.name)
                     .then(() => { })
                     .then(err => console.log(err))
-                // savedUser(data.name, data.email)
+                savedUser(data.name, data.email, data.role)
                 toast.success('Successfully created account.')
                 console.log(user);
             })
@@ -35,8 +35,8 @@ const Register = () => {
     }
 
     // user save to db
-    const savedUser = (name, email) => {
-        const user = { name, email }
+    const savedUser = (name, email, role) => {
+        const user = { name, email, role }
         fetch('http://localhost:5000/user', {
             method: 'POST',
             headers: {
@@ -108,18 +108,17 @@ const Register = () => {
                         {errors.password && <p className='text-red-500'>{errors.password?.message}</p>}
                     </div>
                     <div className="form-control w-full mb-7">
-                    <label className="label"><span className="label-text">Your Identity</span></label>
-                    <select {...register("role", {
-                        required: "Select category it's required."
+                        <label className="label"><span className="label-text">Your Identity</span></label>
+                        <select {...register("role", {
+                            required: "Select role it's required."
 
-                    })}
-                        className="select select-bordered w-full max-w-xs">
-                        <option disabled selected>Select Role</option >
-                        <option>Seller</option>
-                        <option>Buyer</option>
-                        
-                    </select>
-                </div>
+                        })}
+                            className="select select-bordered w-full max-w-xs">
+                            <option>Buyer</option>
+                            <option>Seller</option>
+
+                        </select>
+                    </div>
                     <input type="submit" value={'Sign Up'} className='btn btn-accent w-full' />
                 </form>
                 <p className='text-center text-accent my-4'>Already have an account?<Link className='text-secondary' to='/login'> Login</Link> </p>
