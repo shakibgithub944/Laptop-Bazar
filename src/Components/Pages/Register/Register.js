@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, handleGoogleSignIn } = useContext(AuthContext);
 
     // const navigate = useNavigate();
     // coustom hook for jwt
@@ -20,6 +20,7 @@ const Register = () => {
     // }
 
     const handleSignUp = data => {
+        console.log(data.email, data.password)
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -50,7 +51,7 @@ const Register = () => {
     //             // getJwtToken(email)
     //         })
     // }
-     // get jwt token
+    // get jwt token
     // const getJwtToken = email => {
     //     fetch(`http://localhost:5000/jwt?email=${email}`)
     //         .then(res => res.json())
@@ -61,6 +62,16 @@ const Register = () => {
     //             }
     //         })
     // }
+
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className='flex items-center justify-center h-screen'>
@@ -100,7 +111,7 @@ const Register = () => {
                 </form>
                 <p className='text-center text-accent my-4'>Already have an account?<Link className='text-secondary' to='/login'> Login</Link> </p>
                 <div className="divider">OR</div>
-                <button type="submit" className='btn btn-outline w-full uppercase' >Continue with Google</button>
+                <button type="submit" onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
 
             </div>
         </div>

@@ -7,7 +7,7 @@ import { AuthContext } from '../../UserContext/AuthProvider';
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, handleGoogleSignIn } = useContext(AuthContext);
 
     // const [createEmail, setCreateEmail] = useState('');
     // const [token] = useToken(createEmail);
@@ -32,6 +32,15 @@ const Login = () => {
             })
             .then(err => console.log(err))
 
+    }
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -66,7 +75,7 @@ const Login = () => {
                 </form>
                 <p className='text-center text-accent my-4'>New to Laptop-Bazar? <Link className='text-secondary' to='/register'>Create new account</Link> </p>
                 <div className="divider">OR</div>
-                <button type="submit" className='btn btn-outline w-full uppercase' >Continue with Google</button>
+                <button type="submit"onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
 
             </div>
         </div>
