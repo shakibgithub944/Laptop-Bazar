@@ -1,4 +1,5 @@
 import React from 'react';
+import Category from '../Category/Category';
 import Header from '../Header/Header';
 import AdvertiseItem from './AdvertiseItem/AdvertiseItem';
 import Footer from './Footer/Footer';
@@ -8,7 +9,7 @@ const Home = () => {
     return (
         <div>
             <Header></Header>
-            <h1>This is Category</h1>
+            <Category></Category>
             <AdvertiseItem></AdvertiseItem>
             <Reviews></Reviews>
             <Footer></Footer>
