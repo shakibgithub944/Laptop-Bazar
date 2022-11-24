@@ -20,7 +20,7 @@ const Register = () => {
     // }
 
     const handleSignUp = data => {
-        console.log(data.email, data.password)
+        console.log(data.email, data.role)
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -35,22 +35,22 @@ const Register = () => {
     }
 
     // user save to db
-    // const savedUser = (name, email) => {
-    //     const user = { name, email }
-    //     fetch('http://localhost:5000/user', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setcreatedEmail(email)
-    //             // getJwtToken(email)
-    //         })
-    // }
+    const savedUser = (name, email) => {
+        const user = { name, email }
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // setcreatedEmail(email)
+                // getJwtToken(email)
+            })
+    }
     // get jwt token
     // const getJwtToken = email => {
     //     fetch(`http://localhost:5000/jwt?email=${email}`)
@@ -75,7 +75,7 @@ const Register = () => {
 
     return (
         <div className='flex items-center justify-center h-screen'>
-            <div className='h-[556px] w-96 p-7 shadow-lg rounded-lg'>
+            <div className='h-[580px] w-96 p-7 shadow-lg rounded-lg'>
                 <h1 className='text-xl text-accent text-center my-5'>Sign Up</h1>
 
                 <form onSubmit={handleSubmit(handleSignUp)}>
@@ -97,7 +97,7 @@ const Register = () => {
                             className="input input-bordered w-full" />
                         {errors.email && <p className='text-red-500'>{errors.email?.message}</p>}
                     </div>
-                    <div className="form-control w-full mb-7">
+                    <div className="form-control w-full">
                         <label className="label"><span className="label-text">Password</span></label>
                         <input type="password"{...register("password", {
                             required: "Password is required.",
@@ -107,6 +107,19 @@ const Register = () => {
                             className="input input-bordered w-full" />
                         {errors.password && <p className='text-red-500'>{errors.password?.message}</p>}
                     </div>
+                    <div className="form-control w-full mb-7">
+                    <label className="label"><span className="label-text">Your Identity</span></label>
+                    <select {...register("role", {
+                        required: "Select category it's required."
+
+                    })}
+                        className="select select-bordered w-full max-w-xs">
+                        <option disabled selected>Select Role</option >
+                        <option>Seller</option>
+                        <option>Buyer</option>
+                        
+                    </select>
+                </div>
                     <input type="submit" value={'Sign Up'} className='btn btn-accent w-full' />
                 </form>
                 <p className='text-center text-accent my-4'>Already have an account?<Link className='text-secondary' to='/login'> Login</Link> </p>
