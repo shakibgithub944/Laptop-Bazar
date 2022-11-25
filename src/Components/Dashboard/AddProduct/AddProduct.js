@@ -10,7 +10,7 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key
-
+    const navigate = useNavigate();
 
     const { data: categorys = [], isLoading } = useQuery({
         queryKey: ['category'],
@@ -62,7 +62,7 @@ const AddProduct = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`${data.title} successfully added.`)
-                            // navigate('/dashboard/managedoctor')
+                            navigate('/dashboard/myproducts')
                         })
 
                 }

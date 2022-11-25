@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast'
+import { AuthContext } from '../../UserContext/AuthProvider';
 
 const Alluser = () => {
     const [users, setUsers] = useState([]);
+    const { user } = useContext(AuthContext)
 
 
     useEffect(() => {
@@ -44,23 +46,23 @@ const Alluser = () => {
                             <th>Index</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Status</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            users.map((user, i) => <tr
+                            users.map((userr, i) => <tr
                                 key={i}
                                 className="hover">
                                 <th>{i + 1}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>Purple</td>
-                                <td>{user.role}</td>
+                                <td>{userr.name}</td>
+                                <td>{userr.email}</td>
+                                <td>{userr.role}</td>
                                 <td>
-                                    <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
+                                    {
+                                        user?.email !== userr.email ? <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button> : 'Current user'
+                                    }
                                 </td>
                             </tr>)
                         }
