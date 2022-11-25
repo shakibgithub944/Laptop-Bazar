@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast'
 
 const Alluser = () => {
     const [users, setUsers] = useState([]);
@@ -10,7 +11,27 @@ const Alluser = () => {
             .then(data => {
                 setUsers(data.data);
             })
-    }, [])
+    }, [users])
+
+    const handleDeleteUser = (id) => {
+        const deleteUser = window.confirm('Are you sure to Delete?')
+        if (deleteUser) {
+            fetch(`http://localhost:5000/user/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        toast.success('User Deleted')
+                    }
+                })
+        }
+
+
+    }
 
     return (
         <div>
@@ -39,7 +60,7 @@ const Alluser = () => {
                                 <td>Purple</td>
                                 <td>{user.role}</td>
                                 <td>
-                                    <button className='btn btn-sm btn-error'>Delete</button>
+                                    <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
                                 </td>
                             </tr>)
                         }

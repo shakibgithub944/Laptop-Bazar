@@ -1,9 +1,27 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom'
 
 const Products = () => {
     const products = useLoaderData();
-    // console.log(products.length);
+
+    const handleReportedProduct = (id) => {
+        fetch(`http://localhost:5000/allproduct/reported/${id}`, {
+            method: 'PUT',
+            headers: {
+                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.success('An admin check your report. Thank you.')
+                }
+
+            })
+        
+    }
+
     return (
         <div>
             <h1 className='text-3xl text-center my-10'>Products</h1>
@@ -22,7 +40,7 @@ const Products = () => {
                             <p>Buying Price: <del>{product.originalprice}$</del> </p>
                             <p>Selling Price: <b>{product.sellingprice}$</b></p>
                             <div className="card-actions justify-between">
-                                <button className="btn btn-accent">Add wishList!</button>
+                                <p onClick={() => handleReportedProduct(product._id)} className="my-4 link link-info">Report to admin</p>
                                 <button className="btn btn-accent">Book now!</button>
                             </div>
                         </div>

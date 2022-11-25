@@ -9,10 +9,9 @@ const AddProduct = () => {
     // const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
-
     const imageHostKey = process.env.REACT_APP_imgbb_key
-    console.log('host key img',imageHostKey);
 
+    
     const { data: categorys = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {

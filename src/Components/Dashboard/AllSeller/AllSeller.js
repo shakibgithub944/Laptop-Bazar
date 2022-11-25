@@ -35,6 +35,25 @@ const AllSeller = () => {
 
             })
     }
+    const handleDeleteUser = (id) => {
+        const deleteUser = window.confirm('Are you sure to Delete?')
+        if (deleteUser) {
+            fetch(`http://localhost:5000/user/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        toast.success('User Deleted')
+                    }
+                })
+        }
+
+
+    }
 
     return (
         <div>
@@ -59,10 +78,13 @@ const AllSeller = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{ }</td>
+                                <td>{user.status}</td>
                                 <td>{user.role}</td>
-                                <td><button button onClick={() => handleverify(user._id)} className='btn btn-sm mx-3 btn-accent'>Verified</button>
-                                    <button className='btn btn-sm btn-error'>Delete</button>
+                                <td>
+                                    {
+                                        user?.status !== 'verified' && <button button onClick={() => handleverify(user._id)} className='btn btn-sm mx-3 btn-accent'>Verified</button>
+                                    }
+                                    <button onClick={()=>handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
                                 </td>
                             </tr>)
                         }
