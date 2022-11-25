@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {  CheckCircleIcon } from '@heroicons/react/24/solid'
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom'
+import BookingModal from '../BookingModal/BookingModal';
 
 const Products = () => {
     const products = useLoaderData();
     const [verified, setVerified] = useState('')
+    const [product, setProduct] = useState({});
+
     useEffect(() => {
         axios.get('http://localhost:5000/alluser')
             .then(data => {
@@ -34,6 +37,7 @@ const Products = () => {
             })
 
     }
+
 
     return (
         <div>
@@ -63,13 +67,25 @@ const Products = () => {
                             <p>Selling Price: <b>{product.sellingprice}$</b></p>
                             <div className="card-actions justify-between">
                                 <p onClick={() => handleReportedProduct(product._id)} className="my-4 link link-info">Report to admin</p>
-                                <button className="btn btn-accent">Book now!</button>
+                                <label
+                                    htmlFor="booking-modal"
+                                    className="btn btn-accent text-white"
+                                    onClick={() => setProduct(product)}
+                                >Book Now</label>
+                                {/* <button className="btn btn-accent">Book now!</button> */}
                             </div>
                         </div>
                     </div>)
                 }
 
             </div>
+
+            <BookingModal
+            product={product}
+            setProduct={setProduct}
+            >
+
+            </BookingModal>
         </div>
     );
 };

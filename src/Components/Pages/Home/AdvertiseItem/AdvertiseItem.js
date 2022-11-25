@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import toast from 'react-hot-toast';
 
 const AdvertiseItem = () => {
     const [verified, setVerified] = useState('')
@@ -23,6 +24,23 @@ const AdvertiseItem = () => {
             return data;
         }
     })
+    const handleReportedProduct = (id) => {
+        fetch(`http://localhost:5000/allproduct/reported/${id}`, {
+            method: 'PUT',
+            headers: {
+                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    toast.success('An admin check your report. Thank you.')
+                }
+
+            })
+
+    }
 
     return (
         <>
@@ -53,7 +71,9 @@ const AdvertiseItem = () => {
                                     <p>Buying Price: <del>{advertiseItem.originalprice}$</del> </p>
                                     <p>Selling Price: <b>{advertiseItem.sellingprice}$</b></p>
                                     <div className="card-actions justify-between">
-                                        <p className="my-4 link link-info">Report to admin</p>
+                                        <p
+                                            onClick={() => handleReportedProduct(advertiseItem._id)}
+                                            className="my-4 link link-info">Report to admin</p>
                                         <button className="btn btn-accent">Book now!</button>
                                     </div>
                                 </div>
