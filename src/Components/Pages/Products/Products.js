@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BeakerIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
+import {  CheckCircleIcon } from '@heroicons/react/24/solid'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom'
@@ -50,6 +50,7 @@ const Products = () => {
                             <p>Detail: {product.description}</p>
                             <p>Post Date:{product.postdate}</p>
                             <p>Condition: {product.condition}</p>
+                            <p>Year of purchase: {product.purchasetime}</p>
                             <p>Location: {product.location}</p>
                             <p>Mobile: {product.number}</p>
                             <p className='flex items-center gap-1'>Seller: {product.seller}
