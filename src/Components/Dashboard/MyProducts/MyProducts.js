@@ -7,7 +7,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
     const url = `http://localhost:5000/myproduct?email=${user?.email}`
-    const { data: products = [],refetch } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -37,6 +37,23 @@ const MyProducts = () => {
                 })
         }
     }
+    const handleAdvertise = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/allproduct/advertise/${id}`, {
+            method: 'PUT',
+            headers: {
+                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.success('Product successfully advertised.')
+                }
+
+            })
+        
+    }
 
 
     return (
@@ -49,6 +66,7 @@ const MyProducts = () => {
                             <th>Index</th>
                             <th>Name</th>
                             <th>Product Status</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -68,14 +86,22 @@ const MyProducts = () => {
 
                                 </td>
                                 <td>{item.item}</td>
+                                <td>$ {item.sellingprice}</td>
                                 <td>
-                                    {
-                                        item?.item === 'available'?<button className='btn btn-sm btn-success mr-2'>Sold</button>:''  
-                                    }
-                                    <button
-                                        onClick={() => handleDeleteProduc(item._id)}
-                                        className='btn btn-sm btn-error'
-                                    >Delete</button>
+                                    <span
+                                        className=''>
+                                        <button
+                                            onClick={() => handleAdvertise(item._id)}
+                                            disabled={item.item === 'sold'}
+                                            className='btn btn-sm btn-success mr-2'
+                                        >
+                                            Advertise
+                                        </button>
+                                        <button
+                                            onClick={() => handleDeleteProduc(item._id)}
+                                            className='btn btn-sm btn-error'
+                                        >Delete</button>
+                                    </span>
                                 </td>
                             </tr>)
                         }

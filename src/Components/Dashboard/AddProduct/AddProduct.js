@@ -41,6 +41,7 @@ const AddProduct = () => {
                         seller: user.displayName.toLowerCase(),
                         postdate: data.date,
                         category: data.category,
+                        item: "available",
                         sellingprice: data.sellingprice,
                         originalprice: data.originalprice,
                         location: data.location,
@@ -99,7 +100,7 @@ const AddProduct = () => {
                         className="input input-bordered w-full" />
                     {errors.originalprice && <p className='text-red-500'>{errors.originalprice?.message}</p>}
                 </div>
-                <div className="form-control w-full">
+                {/* <div className="form-control w-full">
                     <label className="label"><span className="label-text">Condition</span></label>
                     <input type="text"{...register("condition", {
                         required: "Condition is required."
@@ -107,7 +108,7 @@ const AddProduct = () => {
                     })}
                         className="input input-bordered w-full" />
                     {errors.condition && <p className='text-red-500'>{errors.condition?.message}</p>}
-                </div>
+                </div> */}
                 <div className="form-control w-full">
                     <label className="label"><span className="label-text">Description</span></label>
                     <textarea type="text"{...register("description", {
@@ -152,6 +153,18 @@ const AddProduct = () => {
                     })}
                         className="input input-bordered w-full" />
                     {errors.purchasetime && <p className='text-red-500'>{errors.purchasetime?.message}</p>}
+                </div>
+                <div className="form-control w-full mb-7">
+                    <label className="label"><span className="label-text">Condition</span></label>
+                    <select {...register("condition", {
+                        required: "Select condition it's required."
+
+                    })}
+                        className="select select-bordered w-full max-w-xs">
+                        <option selected>Good</option>
+                        <option >Excelent</option>
+                        <option >Fair</option>
+                    </select>
                 </div>
                 <div className="form-control w-full">
                     <label className="label"><span className="label-text">Email</span></label>
