@@ -11,7 +11,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key
 
-    
+
     const { data: categorys = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
@@ -38,6 +38,7 @@ const AddProduct = () => {
                     const product = {
                         title: data.title,
                         email: data.email,
+                        seller: user.displayName.toLowerCase(),
                         postdate: data.date,
                         category: data.category,
                         sellingprice: data.sellingprice,

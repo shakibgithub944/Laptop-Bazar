@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 const AllSeller = () => {
 
@@ -78,13 +79,17 @@ const AllSeller = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.status}</td>
+                                <td className='flex items-center justify-center gap-2'>{user.status}
+                                    {
+                                    user.status && <CheckCircleIcon className='h-4 w-4 text-blue-500'></CheckCircleIcon>
+                                    }
+                                </td>
                                 <td>{user.role}</td>
                                 <td>
                                     {
                                         user?.status !== 'verified' && <button button onClick={() => handleverify(user._id)} className='btn btn-sm mx-3 btn-accent'>Verified</button>
                                     }
-                                    <button onClick={()=>handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
+                                    <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
                                 </td>
                             </tr>)
                         }
