@@ -3,9 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import toast from 'react-hot-toast';
+import BookingModal from '../../BookingModal/BookingModal';
 
 const AdvertiseItem = () => {
     const [verified, setVerified] = useState('')
+    const [product, setProduct] = useState({});
     useEffect(() => {
         axios.get('http://localhost:5000/alluser')
             .then(data => {
@@ -73,13 +75,22 @@ const AdvertiseItem = () => {
                                         <p
                                             onClick={() => handleReportedProduct(advertiseItem._id)}
                                             className="my-4 link link-info">Report to admin</p>
-                                        <button className="btn btn-accent">Book now!</button>
+                                        <label
+                                            htmlFor="booking-modal"
+                                            className="btn btn-accent text-white"
+                                            onClick={() => setProduct(advertiseItem)}
+                                        >Book Now</label>
                                     </div>
                                 </div>
                             </div>)
                         }
                     </div>
+                    <BookingModal
+                        product={product}
+                        setProduct={setProduct}
+                    >
 
+                    </BookingModal>
 
                 </div>
             }

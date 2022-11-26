@@ -42,6 +42,7 @@ const AddProduct = () => {
                         postdate: data.date,
                         category: data.category,
                         item: "available",
+                        paid: false,
                         sellingprice: data.sellingprice,
                         originalprice: data.originalprice,
                         location: data.location,

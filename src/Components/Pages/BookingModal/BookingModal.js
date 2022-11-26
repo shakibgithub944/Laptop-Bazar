@@ -25,9 +25,10 @@ const BookingModal = ({ product, setProduct }) => {
             location,
             price,
             productId,
+            paid: false,
             image: product.image
         }
-        console.log(product);
+
         fetch('http://localhost:5000/booking/product', {
             method: 'POST',
             headers: {
@@ -38,7 +39,6 @@ const BookingModal = ({ product, setProduct }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     setProduct(null)
                     navigate('/dashboard')
