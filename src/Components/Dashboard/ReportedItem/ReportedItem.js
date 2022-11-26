@@ -9,7 +9,7 @@ const ReportedItem = () => {
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/reportedItem', {
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
@@ -24,7 +24,7 @@ const ReportedItem = () => {
             fetch(`http://localhost:5000/reportedItem/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 },
             })
                 .then(res => res.json())

@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../UserContext/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../../Hooks/UseToken';
 
 
 const Register = () => {
@@ -10,14 +11,14 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser, handleGoogleSignIn } = useContext(AuthContext);
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // coustom hook for jwt
-    // const [createdEmail, setcreatedEmail] = useState('');
-    // const [token] = useToken(createdEmail);
+    const [createdEmail, setcreatedEmail] = useState('');
+    const [token] = useToken(createdEmail);
 
-    // if (token) {
-    //     navigate('/')
-    // }
+    if (token) {
+        navigate('/')
+    }
 
     const handleSignUp = data => {
         console.log(data.email, data.role)
@@ -47,7 +48,7 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                // setcreatedEmail(email)
+                setcreatedEmail(email)
                 // getJwtToken(email)
             })
     }
@@ -67,6 +68,8 @@ const Register = () => {
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user);
+                toast.success('Login succesfull.')
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);

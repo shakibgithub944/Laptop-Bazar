@@ -17,14 +17,15 @@ const BookingModal = ({ product, setProduct }) => {
         const location = form.location.value;
         const price = form.price.value;
         const productId = _id;
-        const product = {
+        const bookedproduct = {
             title,
             name,
             phone,
             email,
             location,
             price,
-            productId
+            productId,
+            image: product.image
         }
         console.log(product);
         fetch('http://localhost:5000/booking/product', {
@@ -32,7 +33,7 @@ const BookingModal = ({ product, setProduct }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(bookedproduct)
         })
             .then(res => res.json())
             .then(data => {

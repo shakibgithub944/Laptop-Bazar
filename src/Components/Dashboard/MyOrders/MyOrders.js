@@ -37,7 +37,13 @@ const MyOrders = () => {
                                 key={i}
                                 className="hover">
                                 <th>{i + 1}</th>
-                                <td>{product.title}</td>
+                                <td className='flex items-center gap-3'>
+                                    <div className="avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={product.image} alt='' />
+                                        </div>
+                                    </div>
+                                    {product.title}</td>
                                 <td>{product.name}</td>
                                 <td>{product.email}</td>
                                 <td>{product.phone}</td>
