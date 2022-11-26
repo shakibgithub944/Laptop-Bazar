@@ -9,7 +9,7 @@ const Category = () => {
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/category', {
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json();

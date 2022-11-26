@@ -13,7 +13,6 @@ const Products = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/alluser')
             .then(data => {
-                // console.log(data.data);
                 const users = data.data.filter(data => data.status === 'verified')
                 const verify = users.map(vuser => vuser.name)
                 setVerified(verify);
@@ -25,7 +24,7 @@ const Products = () => {
         fetch(`http://localhost:5000/allproduct/reported/${id}`, {
             method: 'PUT',
             headers: {
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

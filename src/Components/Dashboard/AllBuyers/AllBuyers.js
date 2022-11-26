@@ -3,12 +3,12 @@ import { useQuery } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 
 const AllBuyers = () => {
-    const { data: buyers = [], isLoading, refetch } = useQuery({
+    const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/allbuyers', {
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
@@ -22,7 +22,7 @@ const AllBuyers = () => {
             fetch(`http://localhost:5000/user/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 },
             })
                 .then(res => res.json())

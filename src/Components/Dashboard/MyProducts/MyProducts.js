@@ -12,7 +12,7 @@ const MyProducts = () => {
         queryFn: async () => {
             const res = await fetch(url, {
                 headers: {
-                    // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
@@ -25,7 +25,7 @@ const MyProducts = () => {
             fetch(`http://localhost:5000/reportedItem/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 },
             })
                 .then(res => res.json())
@@ -42,7 +42,7 @@ const MyProducts = () => {
         fetch(`http://localhost:5000/allproduct/advertise/${id}`, {
             method: 'PUT',
             headers: {
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

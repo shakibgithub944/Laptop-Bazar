@@ -5,12 +5,12 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 const AllSeller = () => {
 
-    const { data: sellers = [], isLoading, refetch } = useQuery({
+    const { data: sellers = [], refetch } = useQuery({
         queryKey: ['allseller'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/allseller', {
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             const data = await res.json()
@@ -23,7 +23,7 @@ const AllSeller = () => {
         fetch(`http://localhost:5000/allUsers/verify/${id}`, {
             method: 'PUT',
             headers: {
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -42,13 +42,14 @@ const AllSeller = () => {
             fetch(`http://localhost:5000/user/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 },
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.acknowledged) {
-                        toast.success('User Deleted')
+                        refetch()
+                        toast.success('Seller Deleted')
                     }
                 })
         }
