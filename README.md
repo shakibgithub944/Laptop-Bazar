@@ -2,7 +2,7 @@
 [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
 ---
 --- 
-## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. Laptop-Bazar website is full resposive. Here an user can buy products, report a product if he want. This is website contain some meaningfull section. 
+## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) website is full responsive. Here an user can buy products, report a product if he want. This website contain some powefull function. 
 ---
 ## Used technology.
 1. React.Js
