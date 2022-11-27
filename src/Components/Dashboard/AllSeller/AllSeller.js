@@ -88,8 +88,13 @@ const AllSeller = () => {
                                 <td>{user.role}</td>
                                 <td>
                                     {
-                                        user?.status !== 'verified' && <button button onClick={() => handleverify(user._id)} className='btn btn-sm mx-3 btn-accent'>Verified</button>
+                                        <button
+                                        disabled={user?.status === 'verified'}
+                                          onClick={() => handleverify(user._id)}
+                                           className='btn btn-sm mx-3 btn-accent'
+                                           >Verified</button>
                                     }
+                                    
                                     <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>
                                 </td>
                             </tr>)

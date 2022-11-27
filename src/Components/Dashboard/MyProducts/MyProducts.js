@@ -52,7 +52,7 @@ const MyProducts = () => {
                 }
 
             })
-        
+
     }
 
 
@@ -92,7 +92,7 @@ const MyProducts = () => {
                                         className=''>
                                         <button
                                             onClick={() => handleAdvertise(item._id)}
-                                            disabled={item.item === 'sold'}
+                                            disabled={item.item === 'sold' || item.isAdvertise === 'advertise'}
                                             className='btn btn-sm btn-success mr-2'
                                         >
                                             Advertise

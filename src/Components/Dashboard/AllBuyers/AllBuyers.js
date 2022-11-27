@@ -48,7 +48,6 @@ const AllBuyers = () => {
                             <th>Index</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Status</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
@@ -61,7 +60,6 @@ const AllBuyers = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>Purple</td>
                                 <td>{user.role}</td>
                                 <td>
                                     <button onClick={() => handleDeleteUser(user._id)} className='btn btn-sm btn-error'>Delete</button>

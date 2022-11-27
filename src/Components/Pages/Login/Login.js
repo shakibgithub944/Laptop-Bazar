@@ -6,11 +6,11 @@ import { AuthContext } from '../../UserContext/AuthProvider';
 import useToken from '../../Hooks/UseToken';
 
 const Login = () => {
-
+    const [error, setError]=useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { loginUser, handleGoogleSignIn } = useContext(AuthContext);
 
-    const [createEmail, setCreateEmail] = useState('');
+    const [createEmail, setcreatedEmail] = useState('');
     const [token] = useToken(createEmail);
 
     const location = useLocation();
@@ -26,17 +26,53 @@ const Login = () => {
         loginUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                setCreateEmail(data.email)
+                console.log(user.email);
+                // setCreateEmail(data.email)
+                fetch(`http://localhost:5000/jwt?email=${data.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.accessToken) {
+                        navigate(from, { replace: true })
+                        localStorage.setItem('accessToken', data.accessToken);
+                    }
+                })
                 toast.success('Login successful')
             })
-            .then(err => console.log(err))
+            .catch(err => {
+                setError(err.message)
+            })
 
     }
+    const savedUser = (name, email, role) => {
+        const user = { name, email, role }
+        fetch('http://localhost:5000/user/login', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setcreatedEmail(email)
+            })
+    }
     const googleSignIn = () => {
+        const role={
+            role:'Buyer'
+        }
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user.email);
+                fetch(`http://localhost:5000/jwt?email=${result.user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.accessToken) {
+                        localStorage.setItem('accessToken', data.accessToken);
+                    }
+                })
+                savedUser(result.user.displayName, result.user.email, role.role)
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -72,6 +108,7 @@ const Login = () => {
                             <span className="label-text-alt mb-4">Forgot Password?</span>
                         </label>
                     </div>
+                    <p className='text-red-500 my-2'>{error}</p>
                     <input type="submit" value={'Login'} className='btn btn-accent w-full' />
                 </form>
                 <p className='text-center text-accent my-4'>New to Laptop-Bazar? <Link className='text-secondary' to='/register'>Create new account</Link> </p>

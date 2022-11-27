@@ -38,8 +38,8 @@ const Register = () => {
     // user save to db
     const savedUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch('http://localhost:5000/user', {
-            method: 'POST',
+        fetch('http://localhost:5000/user/login', {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -49,25 +49,25 @@ const Register = () => {
             .then(data => {
                 console.log(data);
                 setcreatedEmail(email)
-                // getJwtToken(email)
             })
     }
-    // get jwt token
-    // const getJwtToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.accessToken) {
-    //                 localStorage.setItem('accessToken', data.accessToken);
-    //                 navigate('/');
-    //             }
-    //         })
-    // }
 
     const googleSignIn = () => {
+        const role={
+            role:'Buyer'
+        }
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user);
+                fetch(`http://localhost:5000/jwt?email=${result.user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.accessToken) {
+                        // navigate(from, { replace: true })
+                        localStorage.setItem('accessToken', data.accessToken);
+                    }
+                })
+                savedUser(result.user.displayName, result.user.email, role.role)
                 toast.success('Login succesfull.')
                 navigate('/')
             })
