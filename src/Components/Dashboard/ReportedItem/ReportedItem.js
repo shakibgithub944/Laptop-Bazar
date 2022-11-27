@@ -7,7 +7,7 @@ const ReportedItem = () => {
     const { data: reportedItems = [], isLoading, refetch } = useQuery({
         queryKey: ['reportedItem'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedItem', {
+            const res = await fetch('https://laptop-bazar-server-psi.vercel.app/reportedItem', {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -21,7 +21,7 @@ const ReportedItem = () => {
         console.log(id);
         const deleteProduct = window.confirm('Are you sure to Delete?')
         if (deleteProduct) {
-            fetch(`http://localhost:5000/reportedItem/${id}`, {
+            fetch(`https://laptop-bazar-server-psi.vercel.app/reportedItem/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

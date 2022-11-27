@@ -8,7 +8,7 @@ const AllSeller = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['allseller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allseller', {
+            const res = await fetch('https://laptop-bazar-server-psi.vercel.app/allseller', {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -20,7 +20,7 @@ const AllSeller = () => {
     })
 
     const handleverify = id => {
-        fetch(`http://localhost:5000/allUsers/verify/${id}`, {
+        fetch(`https://laptop-bazar-server-psi.vercel.app/allUsers/verify/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -39,7 +39,7 @@ const AllSeller = () => {
     const handleDeleteUser = (id) => {
         const deleteUser = window.confirm('Are you sure to Delete?')
         if (deleteUser) {
-            fetch(`http://localhost:5000/user/${id}`, {
+            fetch(`https://laptop-bazar-server-psi.vercel.app/user/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

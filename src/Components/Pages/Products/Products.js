@@ -11,7 +11,7 @@ const Products = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/alluser')
+        axios.get('https://laptop-bazar-server-psi.vercel.app/alluser')
             .then(data => {
                 const users = data.data.filter(data => data.status === 'verified')
                 const verify = users.map(vuser => vuser.name)
@@ -21,7 +21,7 @@ const Products = () => {
     }, [])
 
     const handleReportedProduct = (id) => {
-        fetch(`http://localhost:5000/allproduct/reported/${id}`, {
+        fetch(`https://laptop-bazar-server-psi.vercel.app/allproduct/reported/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

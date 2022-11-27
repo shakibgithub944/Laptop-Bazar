@@ -29,7 +29,7 @@ const BookingModal = ({ product, setProduct }) => {
             image: product.image
         }
 
-        fetch('http://localhost:5000/booking/product', {
+        fetch('https://laptop-bazar-server-psi.vercel.app/booking/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

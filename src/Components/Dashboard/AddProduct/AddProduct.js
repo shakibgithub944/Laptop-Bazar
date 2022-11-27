@@ -15,7 +15,7 @@ const AddProduct = () => {
     const { data: categorys = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/category');
+            const res = await fetch('https://laptop-bazar-server-psi.vercel.app/category');
             const data = await res.json();
             return data;
         }
@@ -52,7 +52,7 @@ const AddProduct = () => {
                         purchasetime: data.purchasetime,
                         image: ImageData.data.url
                     }
-                    fetch('http://localhost:5000/addproduct', {
+                    fetch('https://laptop-bazar-server-psi.vercel.app/addproduct', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

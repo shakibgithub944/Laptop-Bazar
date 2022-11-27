@@ -28,7 +28,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user.email);
                 // setCreateEmail(data.email)
-                fetch(`http://localhost:5000/jwt?email=${data.email}`)
+                fetch(`https://laptop-bazar-server-psi.vercel.app/jwt?email=${data.email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {
@@ -45,7 +45,7 @@ const Login = () => {
     }
     const savedUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch('http://localhost:5000/user/login', {
+        fetch('https://laptop-bazar-server-psi.vercel.app/user/login', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +65,7 @@ const Login = () => {
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user.email);
-                fetch(`http://localhost:5000/jwt?email=${result.user.email}`)
+                fetch(`https://laptop-bazar-server-psi.vercel.app/jwt?email=${result.user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {
@@ -83,7 +83,7 @@ const Login = () => {
     return (
         <div className='flex items-center justify-center h-screen'>
             <div className='h-[480px] w-96 p-7 shadow-lg rounded-lg'>
-                <h1 className='text-xl text-accent text-center my-5'>Login</h1>
+                <h1 className='text-xl text-info text-center my-5'>Login</h1>
 
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className="form-control w-full">
@@ -109,9 +109,9 @@ const Login = () => {
                         </label>
                     </div>
                     <p className='text-red-500 my-2'>{error}</p>
-                    <input type="submit" value={'Login'} className='btn btn-accent w-full' />
+                    <input type="submit" value={'Login'} className='btn btn-info w-full text-white' />
                 </form>
-                <p className='text-center text-accent my-4'>New to Laptop-Bazar? <Link className='text-secondary' to='/register'>Create new account</Link> </p>
+                <p className='text-center text-success my-4'>New to Laptop-Bazar? <Link className='text-info' to='/register'>Create new account</Link> </p>
                 <div className="divider">OR</div>
                 <button type="submit" onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
 

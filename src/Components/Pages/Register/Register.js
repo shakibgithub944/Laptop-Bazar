@@ -38,7 +38,7 @@ const Register = () => {
     // user save to db
     const savedUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch('http://localhost:5000/user/login', {
+        fetch('https://laptop-bazar-server-psi.vercel.app/user/login', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -59,7 +59,7 @@ const Register = () => {
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user);
-                fetch(`http://localhost:5000/jwt?email=${result.user.email}`)
+                fetch(`https://laptop-bazar-server-psi.vercel.app/jwt?email=${result.user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {
@@ -79,7 +79,7 @@ const Register = () => {
     return (
         <div className='flex items-center justify-center h-screen'>
             <div className='h-[580px] w-96 p-7 shadow-lg rounded-lg'>
-                <h1 className='text-xl text-accent text-center my-5'>Sign Up</h1>
+                <h1 className='text-xl text-info text-center my-5'>Sign Up</h1>
 
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full">
@@ -122,9 +122,9 @@ const Register = () => {
 
                         </select>
                     </div>
-                    <input type="submit" value={'Sign Up'} className='btn btn-accent w-full' />
+                    <input type="submit" value={'Sign Up'} className='btn btn-info w-full text-white' />
                 </form>
-                <p className='text-center text-accent my-4'>Already have an account?<Link className='text-secondary' to='/login'> Login</Link> </p>
+                <p className='text-center text-success my-4'>Already have an account?<Link className='text-info' to='/login'> Login</Link> </p>
                 <div className="divider">OR</div>
                 <button type="submit" onClick={googleSignIn} className='btn btn-outline w-full uppercase' >Continue with Google</button>
 

@@ -48,14 +48,14 @@ export const router = createBrowserRouter([
                 path: '/allProducts',
                 element: <AllProducts></AllProducts>,
                 loader: async () => {
-                    return fetch('http://localhost:5000/toshoping')
+                    return fetch('https://laptop-bazar-server-psi.vercel.app/toshoping')
                 }
             },
             {
                 path: '/category-product/:name',
                 element: <PrivetRoute> <Products></Products></PrivetRoute>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/category-product/${params.name}`)
+                    return fetch(`https://laptop-bazar-server-psi.vercel.app/category-product/${params.name}`)
                 }
             },
         ]
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booked/${params.id}`)
+                loader: ({ params }) => fetch(`https://laptop-bazar-server-psi.vercel.app/booked/${params.id}`)
             },
         ]
     }

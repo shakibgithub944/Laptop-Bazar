@@ -6,7 +6,7 @@ import { AuthContext } from '../../UserContext/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/myproduct?email=${user?.email}`
+    const url = `https://laptop-bazar-server-psi.vercel.app/myproduct?email=${user?.email}`
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
@@ -22,7 +22,7 @@ const MyProducts = () => {
     const handleDeleteProduc = id => {
         const deleteProduct = window.confirm('Are you sure to Delete?')
         if (deleteProduct) {
-            fetch(`http://localhost:5000/reportedItem/${id}`, {
+            fetch(`https://laptop-bazar-server-psi.vercel.app/reportedItem/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -39,7 +39,7 @@ const MyProducts = () => {
     }
     const handleAdvertise = id => {
         console.log(id);
-        fetch(`http://localhost:5000/allproduct/advertise/${id}`, {
+        fetch(`https://laptop-bazar-server-psi.vercel.app/allproduct/advertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

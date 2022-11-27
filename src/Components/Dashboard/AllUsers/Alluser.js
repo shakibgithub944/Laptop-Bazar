@@ -9,7 +9,7 @@ const Alluser = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/alluser')
+        axios.get('https://laptop-bazar-server-psi.vercel.app/alluser')
             .then(data => {
                 setUsers(data.data);
             })
@@ -18,7 +18,7 @@ const Alluser = () => {
     const handleDeleteUser = (id) => {
         const deleteUser = window.confirm('Are you sure to Delete?')
         if (deleteUser) {
-            fetch(`http://localhost:5000/user/${id}`, {
+            fetch(`https://laptop-bazar-server-psi.vercel.app/user/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { data: myproducts = [] } = useQuery({
         queryKey: ['bookedproducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/booked/product/${user?.email}`)
+            const res = await fetch(`https://laptop-bazar-server-psi.vercel.app/booked/product/${user?.email}`)
             const data = await res.json()
             return data;
         }

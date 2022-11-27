@@ -9,7 +9,7 @@ const AdvertiseItem = () => {
     const [verified, setVerified] = useState('')
     const [product, setProduct] = useState({});
     useEffect(() => {
-        axios.get('http://localhost:5000/alluser')
+        axios.get('https://laptop-bazar-server-psi.vercel.app/alluser')
             .then(data => {
                 const users = data.data.filter(data => data.status === 'verified')
                 const verify = users.map(vuser => vuser.name)
@@ -20,13 +20,13 @@ const AdvertiseItem = () => {
     const { data: advertiseItems = [], refetch } = useQuery({
         queryKey: ['advertiseItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertise/product')
+            const res = await fetch('https://laptop-bazar-server-psi.vercel.app/advertise/product')
             const data = await res.json()
             return data;
         }
     })
     const handleReportedProduct = (id) => {
-        fetch(`http://localhost:5000/allproduct/reported/${id}`, {
+        fetch(`https://laptop-bazar-server-psi.vercel.app/allproduct/reported/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

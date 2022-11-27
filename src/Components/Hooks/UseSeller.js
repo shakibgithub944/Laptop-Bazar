@@ -6,7 +6,7 @@ const useSeller = email => {
     
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/allUsers/seller/${email}`)
+            fetch(`https://laptop-bazar-server-psi.vercel.app/allUsers/seller/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setisSeller(data.isSeller);

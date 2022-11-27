@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ bookedproduct }) => {
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
     const [transectionId, setTransectionId] = useState('')
     const [processing, setProcessing] = useState(false);
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState("");
 
-    const { price, title, email, _id, productId} = bookedproduct;
+    const { price, title, email, _id, productId } = bookedproduct;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://laptop-bazar-server-psi.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -74,7 +76,7 @@ const CheckoutForm = ({ bookedproduct }) => {
                 productId,
                 transectionId: paymentIntent.id
             }
-            fetch('http://localhost:5000/payment', {
+            fetch('https://laptop-bazar-server-psi.vercel.app/payment', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -87,6 +89,7 @@ const CheckoutForm = ({ bookedproduct }) => {
                     if (data.acknowledged) {
                         toast.success('Congratulations , Your payment done.')
                         setTransectionId(paymentIntent.id)
+                        navigate('/dashboard')
                     }
 
                 })
@@ -116,14 +119,14 @@ const CheckoutForm = ({ bookedproduct }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm btn-accent my-2'
+                <button className='btn btn-sm btn-info text-white my-2'
                     type="submit"
                     disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
             <p className='text-red-500'>{cardError}</p>
-            <p className=''>Your Transection Id: {transectionId}</p>
+            <p className=''>TxId:{transectionId}</p>
         </>
     );
 };
