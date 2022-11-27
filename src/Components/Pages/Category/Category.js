@@ -21,7 +21,7 @@ const Category = () => {
     return (
         <div className='my-12'>
             <h1 className='text-3xl text-center my-5'>Product Category</h1>
-            <hr className='w-96 mx-auto' />
+            <hr className='w-96 mx-auto mb-10' />
 
             <div className='grid lg:grid-cols-3 gap-5 mx-5'>
                 {
@@ -30,7 +30,7 @@ const Category = () => {
                         to={`/category-product/${category.brand}`}
                     >
                         <div
-                            className="border text-center">
+                            className="border text-center rounded-2xl bg-info text-white ">
                             <p className='py-3 font-bold'>{category.brand}</p>
 
                         </div>

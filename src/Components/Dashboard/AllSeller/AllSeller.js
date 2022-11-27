@@ -91,7 +91,7 @@ const AllSeller = () => {
                                         <button
                                         disabled={user?.status === 'verified'}
                                           onClick={() => handleverify(user._id)}
-                                           className='btn btn-sm mx-3 btn-accent'
+                                           className='btn btn-sm mx-3 btn-info text-white'
                                            >Verified</button>
                                     }
                                     

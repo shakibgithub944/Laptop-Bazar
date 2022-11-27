@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom';
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import BookingModal from '../BookingModal/BookingModal';
 
-const Products = () => {
-    const products = useLoaderData();
+const AllProducts = () => {
+    const allProducts = useLoaderData();
     const [verified, setVerified] = useState('')
     const [product, setProduct] = useState({});
 
@@ -37,14 +38,14 @@ const Products = () => {
 
     }
 
-
     return (
         <div>
-            <h1 className='text-3xl text-center my-10'>Products</h1>
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mx-10'>
+            <h1 className='text-3xl my-10 text-center'>All Produtcs </h1>
+
+            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-5 m-10'>
 
                 {
-                    products.map(product => <div
+                    allProducts.map(product => <div
                         key={product._id}
                         className="card w-96 glass">
                         <figure><img src={product.image} alt="car!" className='w-full h-64' /></figure>
@@ -78,7 +79,6 @@ const Products = () => {
                 }
 
             </div>
-
             <BookingModal
             product={product}
             setProduct={setProduct}
@@ -89,4 +89,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default AllProducts;

@@ -11,6 +11,7 @@ import MyProducts from "../Components/Dashboard/MyProducts/MyProducts";
 import ReportedItem from "../Components/Dashboard/ReportedItem/ReportedItem";
 import SellerRoute from "../Components/Dashboard/SellerRoute/SellerRoute";
 import Main from "../Components/Main/Main";
+import AllProducts from "../Components/Pages/AllProducts/AllProducts";
 import Blog from "../Components/Pages/Blog/Blog";
 import ErrorPage from "../Components/Pages/ErrorPage/ErrorPage";
 import Home from "../Components/Pages/Home/Home";
@@ -44,6 +45,13 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
+                path: '/allProducts',
+                element: <AllProducts></AllProducts>,
+                loader: async () => {
+                    return fetch('http://localhost:5000/toshoping')
+                }
+            },
+            {
                 path: '/category-product/:name',
                 element: <PrivetRoute> <Products></Products></PrivetRoute>,
                 loader: async ({ params }) => {
@@ -69,10 +77,6 @@ export const router = createBrowserRouter([
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
-                path: '/dashboard/alluser',
-                element: <AdminRoute><Alluser></Alluser></AdminRoute>
-            },
-            {
                 path: '/dashboard/allseller',
                 element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
@@ -87,7 +91,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader:  ({ params }) => fetch(`http://localhost:5000/booked/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/booked/${params.id}`)
             },
         ]
     }

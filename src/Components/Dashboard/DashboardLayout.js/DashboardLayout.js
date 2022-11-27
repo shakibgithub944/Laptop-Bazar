@@ -16,7 +16,7 @@ const DashboardLayout = () => {
         <div>
             <Navber></Navber>
             <div className='md:mx-32'>
-                <div className='grid md:grid-cols-3 lg:grid-cols-5 gap-3 bg-accent p-4 rounded-lg text-white font-bold'>
+                <div className='grid md:grid-cols-3 lg:grid-cols-4 gap-3 bg-info p-4 rounded-lg text-white font-bold'>
                     <li><Link to='/dashboard'>My Order</Link></li>
                     {
                         isSeller && <>
@@ -27,11 +27,9 @@ const DashboardLayout = () => {
 
                     {
                         isAdmin && <>
-                            <li><Link to='/dashboard/alluser'>All Users</Link></li>
                             <li><Link to='/dashboard/allseller'>All Sellers</Link></li>
                             <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
                             <li><Link to='/dashboard/reported'>Repoted Items</Link></li>
-                            {/* <li><Link to='/dashboard/managedoctor'>Manage Doctor</Link></li> */}
                         </>
                     }
                 </div>
