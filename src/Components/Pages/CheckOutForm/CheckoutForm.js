@@ -89,8 +89,7 @@ const CheckoutForm = ({ bookedproduct }) => {
                     if (data.acknowledged) {
                         toast.success('Congratulations , Your payment done.')
                         setTransectionId(paymentIntent.id)
-                        navigate('/dashboard')
-                    }
+                     }
 
                 })
 
@@ -102,7 +101,7 @@ const CheckoutForm = ({ bookedproduct }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
                 <CardElement
                     options={{
                         style: {

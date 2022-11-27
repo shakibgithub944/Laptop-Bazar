@@ -70,6 +70,7 @@ const Login = () => {
                 .then(data => {
                     if (data.accessToken) {
                         localStorage.setItem('accessToken', data.accessToken);
+                        navigate(from, { replace: true })
                     }
                 })
                 savedUser(result.user.displayName, result.user.email, role.role)

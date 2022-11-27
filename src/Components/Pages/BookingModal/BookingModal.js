@@ -69,7 +69,7 @@ const BookingModal = ({ product, setProduct }) => {
                                 <input type="email" name='email' defaultValue={user?.email} className="input input-bordered w-full " disabled />
                                 <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full" />
                                 <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full" />
-                                <input type="submit" className='bg-accent input input-bordered w-full text-white' />
+                                <input type="submit" className='bg-info input input-bordered w-full text-white' />
                             </form>
                         </>
                             :

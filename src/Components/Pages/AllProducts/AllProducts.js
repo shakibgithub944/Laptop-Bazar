@@ -42,7 +42,7 @@ const AllProducts = () => {
         <div>
             <h1 className='text-3xl my-10 text-center'>All Produtcs </h1>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-5 m-10'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-5 mx-7 mb-10'>
 
                 {
                     allProducts.map(product => <div
