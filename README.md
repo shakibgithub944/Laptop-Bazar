@@ -33,4 +33,4 @@
 
 adminEmail: <shakib@gmail.com>
 
-adminPassword: <123456>
+adminPassword: 123456
