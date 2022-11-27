@@ -29,3 +29,6 @@
 * Used Firebse for authentication.
 
 ## [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
+
+adminEmail: shakib@gmail.com
+adminPassword: 123456
