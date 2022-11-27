@@ -44,9 +44,9 @@ const AdvertiseItem = () => {
     }
 
     return (
-        <>
+        <d>
             {
-                advertiseItems?.length && <div className='my-16'>
+                advertiseItems?.length > 0 && < div className='my-16'>
                     <h1 className='text-3xl text-center my-4'>Advertise Products</h1>
                     <hr className='w-96 mx-auto mb-16' />
                     <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 mx-28'>
@@ -73,9 +73,9 @@ const AdvertiseItem = () => {
                                     <p>Selling Price: <b>{advertiseItem.sellingprice}$</b></p>
                                     <div className="card-actions justify-between">
                                         <p
-                                         onClick={() => handleReportedProduct(advertiseItem._id)}
-                                         className="my-4 link link-info"
-                                         >Report to admin</p>
+                                            onClick={() => handleReportedProduct(advertiseItem._id)}
+                                            className="my-4 link link-info"
+                                        >Report to admin</p>
                                         <label
                                             htmlFor="booking-modal"
                                             className="btn btn-info text-white"
@@ -92,10 +92,11 @@ const AdvertiseItem = () => {
                     >
 
                     </BookingModal>
-
                 </div>
+
+
             }
-        </>
+        </d>
     );
 };
 
