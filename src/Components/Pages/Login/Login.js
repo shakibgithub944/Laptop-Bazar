@@ -74,7 +74,6 @@ const Login = () => {
                     }
                 })
                 savedUser(result.user.displayName, result.user.email, role.role)
-                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);

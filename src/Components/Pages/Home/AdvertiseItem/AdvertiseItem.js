@@ -49,7 +49,7 @@ const AdvertiseItem = () => {
                 advertiseItems?.length > 0 && < div className='my-16'>
                     <h1 className='text-3xl text-center my-4'>Advertise Products</h1>
                     <hr className='w-96 mx-auto mb-16' />
-                    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 mx-28'>
+                    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 mx-7'>
                         {
                             advertiseItems.map(advertiseItem => <div
                                 key={advertiseItem._id}
