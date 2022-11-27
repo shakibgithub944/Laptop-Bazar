@@ -1,9 +1,7 @@
-# Live site
-[Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
----
+# Live site [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
 --- 
 ## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) website is full responsive. Here an user can buy products, report a product if he want. This website contain some powefull function. 
----
+
 ## Used technology.
 1. React.Js
 2. Node.js
@@ -13,7 +11,7 @@
 6. Jwt
 7. stripe
  
-* What functionality contains this website?
+# What functionality contains this website?
 * [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) is fully ready to selling used laptop. Here a user can buy products, after buying user can payment for this.
 
 * if anyone want to sell used laptop then he/she create a seller account. A seller has special route and special function. Seller can add product, delete his product, advertise his product and manage his products.
