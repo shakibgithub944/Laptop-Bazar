@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Live site
+[Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
+---
+--- 
+## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. Laptop-Bazar website is full resposive. Here an user can buy products, report a product if he want. This is website contain some meaningfull section. 
+---
+## Used technology.
+1. React.Js
+2. Node.js
+3. Express.js
+4. MongoDB
+5. Firebase
+6. Jwt
+7. stripe
+ 
+* What functionality contains this website?
+* [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) is fully ready to selling used laptop. Here a user can buy products, after buying user can payment for this.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* if anyone want to sell used laptop then he/she create a seller account. A seller has special route and special function. Seller can add product, delete his product, advertise his product and manage his products.
 
-## Available Scripts
+* This website have a admin route. Here admin can use some special and powerfull function to manage buyers, sellers, products and all. An admin can delete or verify an user. 
 
-In the project directory, you can run:
+* This website have special rout for seller. Here seller will manage his activity.
 
-### `npm start`
+* I used stripe payment getway for make payment. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* All data of [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) are stored in mongoDB. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* I used json web token(JWT) for security purpose. This website have special security for buyer, seller, and admin access.
 
-### `npm test`
+* Used Firebse for authentication.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
