@@ -7,7 +7,7 @@ import useToken from '../../Hooks/UseToken';
 
 
 const Register = () => {
-
+    const [error, setError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser, handleGoogleSignIn } = useContext(AuthContext);
 
@@ -30,9 +30,9 @@ const Register = () => {
                     .then(err => console.log(err))
                 savedUser(data.name, data.email, data.role)
                 toast.success('Successfully created account.')
-                console.log(user);
+                console.log(data.role);
             })
-            .then(err => console.log(err))
+            .catch(err => setError(err.message))
     }
 
     // user save to db
@@ -53,20 +53,20 @@ const Register = () => {
     }
 
     const googleSignIn = () => {
-        const role={
-            role:'Buyer'
+        const role = {
+            role: 'Buyer'
         }
         handleGoogleSignIn()
             .then(result => {
                 console.log(result.user);
                 fetch(`https://laptop-bazar-server-psi.vercel.app/jwt?email=${result.user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.accessToken) {
-                        // navigate(from, { replace: true })
-                        localStorage.setItem('accessToken', data.accessToken);
-                    }
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.accessToken) {
+                            // navigate(from, { replace: true })
+                            localStorage.setItem('accessToken', data.accessToken);
+                        }
+                    })
                 savedUser(result.user.displayName, result.user.email, role.role)
                 toast.success('Login succesfull.')
                 navigate('/')
@@ -123,6 +123,7 @@ const Register = () => {
                         </select>
                     </div>
                     <input type="submit" value={'Sign Up'} className='btn btn-info w-full text-white' />
+                    <p className='text-red-500'>{error}</p>
                 </form>
                 <p className='text-center text-success my-4'>Already have an account?<Link className='text-info' to='/login'> Login</Link> </p>
                 <div className="divider">OR</div>
