@@ -50,14 +50,13 @@ const Products = () => {
                         <figure><img src={product.image} alt="car!" className='w-full h-64' /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{product.title}</h2>
-                            <p>Detail: {product.description}</p>
+                            <p>Details: {product.description}</p>
                             <p>Post Date:{product.postdate}</p>
                             <p>Condition: {product.condition}</p>
                             <p>Year of purchase: {product.purchasetime}</p>
                             <p>Location: {product.location}</p>
                             <p>Mobile: {product.number}</p>
                             <p className='flex items-center gap-1'>Seller: {product.seller}
-
                                 {
                                     verified.includes(`${product.seller}`) && <CheckCircleIcon className="h-4 w-4 text-blue-500"></CheckCircleIcon>
                                 }
