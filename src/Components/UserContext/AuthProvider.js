@@ -41,7 +41,6 @@ const handleGoogleSignIn = () => {
     return signInWithPopup(auth, GoogleProvider)
 }
 
-
     const authInfo = {
         createUser,
         loginUser,

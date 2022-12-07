@@ -78,12 +78,10 @@ const Products = () => {
                 }
 
             </div>
-
             <BookingModal
-            product={product}
-            setProduct={setProduct}
+                product={product}
+                setProduct={setProduct}
             >
-
             </BookingModal>
         </div>
     );
