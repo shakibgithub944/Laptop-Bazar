@@ -101,15 +101,6 @@ const AddProduct = () => {
                         className="input input-bordered w-full" />
                     {errors.originalprice && <p className='text-red-500'>{errors.originalprice?.message}</p>}
                 </div>
-                {/* <div className="form-control w-full">
-                    <label className="label"><span className="label-text">Condition</span></label>
-                    <input type="text"{...register("condition", {
-                        required: "Condition is required."
-
-                    })}
-                        className="input input-bordered w-full" />
-                    {errors.condition && <p className='text-red-500'>{errors.condition?.message}</p>}
-                </div> */}
                 <div className="form-control w-full">
                     <label className="label"><span className="label-text">Description</span></label>
                     <textarea type="text"{...register("description", {
