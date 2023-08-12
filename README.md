@@ -1,6 +1,6 @@
-# Live site [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
+# Live site [Laptop-Bazar](https://laptop-bazar-nu.vercel.app/)
 --- 
-## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) website is full responsive. Here an user can buy products, report a product if he want. This website contain some powefull function. 
+## This website is to be releted to selling used laptop and ability to advertise products. Its contain five category products. If the owner want to add another catagory, He can add another catagory. [Laptop-Bazar](https://laptop-bazar-nu.vercel.app/) website is full responsive. Here an user can buy products, report a product if he want. This website contain some powefull function. 
 
 ## Used technology.
 1. React.Js
@@ -12,7 +12,7 @@
 7. stripe
  
 # What functionality contains this website?
-* [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) is fully ready to selling used laptop. Here a user can buy products, after buying user can payment for this.
+* [Laptop-Bazar](https://laptop-bazar-nu.vercel.app/) is fully ready to selling used laptop. Here a user can buy products, after buying user can payment for this.
 
 * if anyone want to sell used laptop then he/she create a seller account. A seller has special route and special function. Seller can add product, delete his product, advertise his product and manage his products.
 
@@ -22,13 +22,13 @@
 
 * I used stripe payment getway for make payment. 
 
-* All data of [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/) are stored in mongoDB. 
+* All data of [Laptop-Bazar](https://laptop-bazar-nu.vercel.app/) are stored in mongoDB. 
 
 * I used json web token(JWT) for security purpose. This website have special security for buyer, seller, and admin access.
 
 * Used Firebse for authentication.
 
-## [Laptop-Bazar](https://laptop-bazar-a7f17.web.app/)
+## [Laptop-Bazar](https://laptop-bazar-nu.vercel.app/)
 
 
 adminEmail: <shakib@gmail.com>
